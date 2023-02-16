@@ -5,6 +5,7 @@
     --color-yellow: #FFC80B;
 
     --button-height: 92px;
+    --slider-position: 10%;
 }
 
 *{
@@ -63,58 +64,22 @@ button{
 
 
 /*CSS VOLUME*/
-#volume{
-    display: flex;
-    justify-content: center;
-}
-input[type="range"] {
-    /* To remove default styles appplied by webkit browsers */
-    -webkit-appearance: none; 
-
-    width: 80%;
-    background: transparent;
+input {
     position: relative;
-}   
-
-input[type="range"]:focus {
-    /* To remove default (mostly blue) outline appplied by browsers on :focus */
-    outline: 0;
-}
-
-/* SLIDER THUMB -> represented by the orange ball in the design */
-/* Webkit based browsers (chrome, opera, ...) */
-input[type="range"]::-webkit-slider-thumb {
-     /* Removes the default styling */
-    -webkit-appearance: none;
-
-    width: 5em;
-    height: 5em;
-    margin: .5em 0;
-    background: var(--color-yellow);
-    border-radius: 100%;
-
-    /* The inset shadow gives depth and makes the thumb look 3 dimensional and the other one shows a subtle effect of the shadow it creates because of the light source coming from the top left of the page */
-    box-shadow: 
-                inset .8em .8em 5px -8px rgba(255, 255, 255, .4),
-                inset -.4em -.4em 10px -3px rgba(0,0,0,.2),
-                0.7em 0.5em 7px -0.5em rgba(0,0,0,.4);;
-
-    cursor: pointer;
-}
-
-/* RUNNABLE TRACK -> represented by the indented carve in which the ball (thumb) moves */
-/* Webkit browsers */
-input[type="range"]::-webkit-slider-runnable-track {
-    background: transparent;
+    appearance: none;
+    background-color: var(--color-blue-dark);
+    height: var(--button-height);
     width: 100%;
-    height: 6em;
-    padding: 0 1em;
-    border-radius: 2em;
-
-    /* These shadow are what create the skeumorphic indent on the track. The first one is dark to show places in the indent that light don't reach and the second one shows places where light meets thereby creating the illusion of depth */ 
-    box-shadow: 
-                inset .6em 1em 12px rgba(0,0,0,.15),
-                inset -.6em -1em 12px rgba(228, 228, 228, 0.415);
-}
-
-
+  }
+  
+  input:before {
+    content: "";
+    position: absolute;
+    width: var(--slider-position);
+    height: 100%;
+    background-color: var(--color-yellow);
+  }
+  
+  input::-webkit-slider-thumb {
+    opacity: 0;
+  }
